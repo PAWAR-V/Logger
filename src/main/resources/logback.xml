@@ -1,0 +1,77 @@
+<!-- <configuration>
+<appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+<encoder>
+<pattern>
+
+%{MM.DD. HH.mm.ss.SSS} [%t] [%level] ["logger{36}-%msg%n"]
+</pattern>
+</encoder>
+</appender>
+<appender name="RollingFileAppender" 
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
+<file> app.log</file>>
+<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+<pattern>
+
+		%{MM.DD. HH.mm.ss.SSS} [%t] [%level] ["logger{36}-%msg%n"]
+		
+</pattern>
+</encoder>
+<rollingPolicy 
+class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<fileNamePattern>app_%d{MM.DD. HH.mm.ss.SSS}.log</fileNamePattern>
+<maxHistory>10</maxHistory>
+<totalSizeCap>10KB</totalSizeCap>
+</rollingPolicy>
+</appender>
+<logger name="org.springframework.boot" level="info" additivity="false">
+
+<appender-ref ref="ConsoleAppender" />
+<appender-ref ref="RollingFileAppender" />
+</logger>
+
+
+<logger name="com.logger" level="info" additivity="false">
+<appender-ref ref="ConsoleAppender" />
+<appender-ref ref="RollingFileAppender" />
+</logger>
+
+<root level="info">
+<appender-ref ref="ConsoleAppender" />
+</root>
+</configuration>
+-->
+
+
+<configuration>
+
+    <!-- Define the pattern for log messages -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Write logs to a file -->
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set the logging level for your application -->
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+
+    <!-- Set specific logging level for your controller -->
+    <logger name="com.example.WelcomeController" level="debug" additivity="false">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </logger>
+
+</configuration>
+
