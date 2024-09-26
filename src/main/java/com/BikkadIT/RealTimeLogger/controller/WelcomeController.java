@@ -24,4 +24,17 @@ public class WelcomeController {
 		logger.info(eMsg);
 		return "welcome to bikkad it";
 	}
+	
+	@GetMapping("/tast-1")
+	public String getAllLocationTask() {
+		
+		String sMsg= "start point of getAllLocation()";
+		System.out.println(LocalDate.now()+""+sMsg);
+		logger.info(sMsg);
+		
+		String eMsg= "start point of getAllLocation()";
+		System.out.println(LocalDate.now()+""+eMsg);
+		logger.info(eMsg);
+		return "welcome to bikkad it";
+	}
 }
